@@ -19,8 +19,7 @@ RUN echo 'autoload -Uz compinit promptinit' > ~/.zshrc && \
     echo 'compinit' >> ~/.zshrc && \
     echo 'promptinit' >> ~/.zshrc && \
     echo 'prompt walters' >> ~/.zshrc && \
-    echo 'alias ll="ls -la"' >> ~/.zshrc && \
-    echo 'echo "☕ Welcome to Manjaro WSL. Type fastfetch to see the specs."' >> ~/.zshrc
+    echo 'alias ll="ls -la"' >> ~/.zshrc
 
 # Switch back to root to copy system configurations if needed
 USER root
