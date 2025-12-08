@@ -1,0 +1,4 @@
+output/
+.vscode/
+*.tar
+*.tar.gz
