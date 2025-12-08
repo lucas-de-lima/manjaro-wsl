@@ -2,15 +2,9 @@
 
 A guide to transform your Manjaro WSL into a robust development environment. Follow the steps in order.
 
+## 1. Basic Setup
+
 **Before starting:** `sudo pacman -Syyu`
-
-## 1. Basic Setup (Nano Editor)
-
-Install nano for quick edits without memorizing vim shortcuts:
-
-```bash
-sudo pacman -Syu nano
-```
 
 ## 2. Optimize Mirrors
 
@@ -59,7 +53,7 @@ source ~/.zshrc
 
 ### Step A: Install Font on Windows
 
-1. Download MesloLGS NF font
+1. Download [MesloLGS NF font](https://github.com/romkatv/dotfiles-public?tab=readme-ov-file#windows-preparation)
 2. Install by double-clicking
 3. Restart Windows Terminal and configure the font in Manjaro profile settings
 

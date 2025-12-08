@@ -44,3 +44,9 @@ After completion, the artifacts will be available in the `output/` directory:
 ## Credits
 
 This project uses the launcher from the [wsldl](https://github.com/yuk7/wsldl) project by yuk7.
+
+## Post Installation
+
+Want to turn this basic installation into a robust development machine (Zsh plugins, ASDF, Powerlevel10k)?
+
+Check out our complete guide: [Post-Installation Guide](docs\Post-Installation.md)
