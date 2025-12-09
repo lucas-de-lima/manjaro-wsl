@@ -49,4 +49,4 @@ This project uses the launcher from the [wsldl](https://github.com/yuk7/wsldl) p
 
 Want to turn this basic installation into a robust development machine (Zsh plugins, ASDF, Powerlevel10k)?
 
-Check out our complete guide: [Post-Installation Guide](docs\Post-Installation.md)
+Check out our complete guide: [Post-Installation Guide](./docs/Post-Installation.md)
