@@ -6,16 +6,15 @@ Automated pipeline to generate a custom Manjaro Linux distribution for Windows S
 
 * WSL2 enabled
 * Docker Desktop installed and running
-* PowerShell
 
 ## Build Process
 
 1. Clone this repository
-2. Open PowerShell in the project root directory
+2. Open your terminal in the project root directory
 3. Run the build script:
 
-   ```powershell
-   .\build.ps1
+   ```sh
+   ./build.sh
    ```
 
 After completion, the artifacts will be available in the `output/` directory:
@@ -30,7 +29,7 @@ After completion, the artifacts will be available in the `output/` directory:
 3. Run `Manjaro.exe` to register the distribution in WSL
 4. Validate the installation:
 
-   ```powershell
+   ```sh
    wsl -d Manjaro
    ```
 
