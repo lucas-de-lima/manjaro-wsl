@@ -1,6 +1,15 @@
 # Manjaro WSL Builder
-
 Automated pipeline to generate a custom Manjaro Linux distribution for Windows Subsystem for Linux (WSL2) using Docker.
+
+[![Downloads](https://img.shields.io/github/downloads/lucas-de-lima/manjaro-wsl/total?logo=github\&style=flat-square)](https://github.com/lucas-de-lima/manjaro-wsl/releases)
+[![Latest Release](https://img.shields.io/github/v/release/lucas-de-lima/manjaro-wsl?display_name=release\&label=latest%20release\&style=flat-square)](https://github.com/lucas-de-lima/manjaro-wsl/releases/latest)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![License](https://img.shields.io/github/license/lucas-de-lima/manjaro-wsl.svg?style=flat-square)](https://github.com/lucas-de-lima/manjaro-wsl/blob/main/LICENSE)
+
+<p align="center">
+  <img src="./docs/win-terminal-mj.png" alt="Manjaro WSL" width="80%">
+</p>
+
 
 ## Requirements
 
@@ -13,7 +22,7 @@ Automated pipeline to generate a custom Manjaro Linux distribution for Windows S
 2. Open your terminal in the project root directory
 3. Run the build script:
 
-   ```sh
+   ```
    ./build.sh
    ```
 
@@ -29,7 +38,7 @@ After completion, the artifacts will be available in the `output/` directory:
 3. Run `Manjaro.exe` to register the distribution in WSL
 4. Validate the installation:
 
-   ```sh
+   ```
    wsl -d Manjaro
    ```
 
