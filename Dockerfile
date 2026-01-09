@@ -3,7 +3,10 @@ FROM manjarolinux/base:latest
 LABEL maintainer="Lucas"
 LABEL description="Manjaro RootFS Generator for WSL2"
 
-RUN pacman -Syu --noconfirm && \
+RUN pacman -Sy --noconfirm archlinux-keyring manjaro-keyring && \
+    pacman-key --init && \
+    pacman-key --populate archlinux manjaro && \
+    pacman -Syu --noconfirm && \
     pacman -S --noconfirm base-devel git vim zsh sudo wget fastfetch unzip && \
     pacman -Sc --noconfirm
 
