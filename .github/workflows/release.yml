@@ -1,6 +1,11 @@
 name: Auto Release Factory
 
 on:
+  workflow_dispatch:
+  
+  schedule:
+    - cron: '0 3 * * 1'
+
   push:
     branches:
       - main
@@ -20,9 +25,7 @@ jobs:
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
+      
       - name: 🔧 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -38,20 +41,34 @@ jobs:
           zip -r ../Manjaro-WSL-Distro.zip ./*
           cd ..
 
-      - name: 🏷️ Calculate Next Version
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: patch
-          release_branches: main
+      - name: 📅 Generate Calendar Version (CalVer)
+        id: calver
+        run: |
+          # Gera uma data no formato vYYYY.MM.DD (ex: v2025.10.26)
+          DATE_TAG="v$(date +'%Y.%m.%d')"
+          echo "Generated Tag: $DATE_TAG"
+          echo "tag=$DATE_TAG" >> $GITHUB_OUTPUT
 
       - name: 🚀 Create Release
         uses: softprops/action-gh-release@v1
         with:
           files: Manjaro-WSL-Distro.zip
-          tag_name: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
+          tag_name: ${{ steps.calver.outputs.tag }}
+          name: Manjaro WSL Build ${{ steps.calver.outputs.tag }}
+          draft: false
+          prerelease: false
+          body: |
+            ## 🐧 Manjaro WSL - Build ${{ steps.calver.outputs.tag }}
+            
+            Build automatizado contendo os pacotes mais recentes do Manjaro.
+            
+            - **Data da Compilação:** ${{ steps.calver.outputs.tag }}
+            - **Base Image:** `manjarolinux/base:latest`
+            - **Commit de Origem:** `${{ github.sha }}`
+            
+            ### Como instalar
+            1. Baixe o `Manjaro-WSL-Distro.zip`.
+            2. Extraia o conteúdo.
+            3. Execute o instalador (ou importe manualmente via `wsl --import`).
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
