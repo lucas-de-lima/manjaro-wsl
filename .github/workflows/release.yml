@@ -44,9 +44,7 @@ jobs:
       - name: 📅 Generate Calendar Version (CalVer)
         id: calver
         run: |
-          # Gera uma data no formato vYYYY.MM.DD (ex: v2025.10.26)
           DATE_TAG="v$(date +'%Y.%m.%d')"
-          echo "Generated Tag: $DATE_TAG"
           echo "tag=$DATE_TAG" >> $GITHUB_OUTPUT
 
       - name: 🚀 Create Release
@@ -60,15 +58,15 @@ jobs:
           body: |
             ## 🐧 Manjaro WSL - Build ${{ steps.calver.outputs.tag }}
             
-            Build automatizado contendo os pacotes mais recentes do Manjaro.
+            Automated build containing the latest Manjaro packages.
             
-            - **Data da Compilação:** ${{ steps.calver.outputs.tag }}
+            - **Build Date:** ${{ steps.calver.outputs.tag }}
             - **Base Image:** `manjarolinux/base:latest`
-            - **Commit de Origem:** `${{ github.sha }}`
+            - **Source Commit:** `${{ github.sha }}`
             
-            ### Como instalar
-            1. Baixe o `Manjaro-WSL-Distro.zip`.
-            2. Extraia o conteúdo.
-            3. Execute o instalador (ou importe manualmente via `wsl --import`).
+            ### How to Install
+            1. Download `Manjaro-WSL-Distro.zip`.
+            2. Extract the contents.
+            3. Run the installer (or import manually via `wsl --import`).
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
