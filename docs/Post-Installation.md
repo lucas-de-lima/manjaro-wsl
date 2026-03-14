@@ -62,7 +62,9 @@ echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
 
 ### Step C: Configure Theme
 
-Close and reopen the terminal. The Powerlevel10k wizard will start automatically.
+**Before opening the Manjaro terminal again:** open **Windows Terminal Settings**, select the **Manjaro** distro profile, and set the **font** to **MesloLGS NF** (Appearance tab). Only then open the Manjaro terminal. If you skip this step, the Powerlevel10k wizard will show unrecognized characters as "?" during setup.
+
+Then close and reopen the terminal. The Powerlevel10k wizard will start automatically.
 
 ## 5. ZSH Plugins (Autocomplete & Highlighting)
 
