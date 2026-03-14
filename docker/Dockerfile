@@ -7,7 +7,8 @@ RUN pacman -Sy --noconfirm archlinux-keyring manjaro-keyring && \
     pacman-key --init && \
     pacman-key --populate archlinux manjaro && \
     pacman -Syu --noconfirm && \
-    pacman -S --noconfirm base-devel git vim zsh sudo wget fastfetch unzip && \
+    pacman -S --noconfirm base-devel git vim zsh sudo wget fastfetch unzip \
+        nano procps iproute2 which && \
     pacman -Sc --noconfirm
 
 RUN useradd -m -G wheel -s /bin/zsh manjaro && \
@@ -22,13 +23,11 @@ RUN echo 'autoload -Uz compinit promptinit' > ~/.zshrc && \
 
 USER root
 
+# WSL config and assets last so they are not overwritten and are present in export
 COPY config/wsl.conf /etc/wsl.conf
-
 COPY config/wsl-distribution.conf /etc/wsl-distribution.conf
-
 RUN mkdir -p /usr/lib/wsl
 COPY config/manjaro.ico /usr/lib/wsl/manjaro.ico
-# --------------------------------------------------
 
 USER manjaro
 WORKDIR /home/manjaro

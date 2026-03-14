@@ -2,28 +2,20 @@
 
 A guide to transform your Manjaro WSL into a robust development environment. Follow the steps in order.
 
-## 1\. Basic Setup
+## 1. Basic Setup and Mirror Optimization
 
-**Before starting:** `sudo pacman -Syyu`
-
-## 2\. Optimize Mirrors
-
-Speed up package downloads:
+Optimize mirrors first, then update the system:
 
 ```bash
 sudo pacman-mirrors --fasttrack 5
 sudo pacman -Syyu
 ```
 
-## 3\. AUR Setup (Yay)
+## 2. AUR Setup (Yay)
 
-Install yay to access the Arch User Repository:
+Install yay to access the Arch User Repository. Build dependencies (`base-devel`, `git`) are already installed in the rootfs.
 
 ```bash
-# Install build dependencies
-sudo pacman -S --needed base-devel git
-
-# Clone yay
 cd /tmp
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -34,7 +26,7 @@ makepkg -si
 
 **Note:** Press Enter when prompted with "Diffs to show?"
 
-## 4\. Version Manager (ASDF)
+## 3. Version Manager (ASDF)
 
 Install ASDF via AUR:
 
@@ -49,13 +41,13 @@ echo 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-## 5\. Terminal Theme (Powerlevel10k)
+## 4. Terminal Theme (Powerlevel10k)
 
 ### Step A: Install Font on Windows
 
 1.  Download [MesloLGS NF font](https://github.com/romkatv/dotfiles-public?tab=readme-ov-file#windows-preparation)
 2.  Install by double-clicking
-3.  Restart Windows Terminal and configure the font in Manjaro profile settings
+3.  Restart Windows Terminal. In Windows Terminal: open **Settings** → select the **Manjaro** profile → go to the **Appearance** tab → in the **Font** field, select **MesloLGS NF**
 
 ### Step B: Install Theme on Linux
 
@@ -72,7 +64,7 @@ echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
 
 Close and reopen the terminal. The Powerlevel10k wizard will start automatically.
 
-## 6\. ZSH Plugins (Autocomplete & Highlighting)
+## 5. ZSH Plugins (Autocomplete & Highlighting)
 
 Install lightweight plugins manually to enable command suggestions (grey text) and syntax highlighting (colors for valid/invalid commands).
 
@@ -92,7 +84,7 @@ echo "source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.z
 source ~/.zshrc
 ```
 
-## 7\. Modern Tools
+## 6. Modern Tools
 
 Install modern replacements for traditional commands:
 
@@ -111,7 +103,7 @@ alias grep='rg'
 EOF
 ```
 
-## 8\. Docker Integration
+## 7. Docker Integration
 
 Use Docker from Windows within Manjaro:
 

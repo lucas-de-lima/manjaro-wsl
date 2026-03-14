@@ -31,8 +31,8 @@ jobs:
 
       - name: 🏗️ Execute Build Script
         run: |
-          chmod +x build.sh
-          ./build.sh
+          chmod +x scripts/build.sh
+          ./scripts/build.sh
 
       - name: 📦 Package Artifacts
         run: |
@@ -65,8 +65,21 @@ jobs:
             - **Source Commit:** `${{ github.sha }}`
             
             ### How to Install
-            1. Download `Manjaro-WSL-Distro.zip`.
-            2. Extract the contents.
-            3. Run the installer (or import manually via `wsl --import`).
+            
+            1. Download `Manjaro-WSL-Distro.zip` and extract the contents.
+            2. In PowerShell, run (use the full path to `rootfs.tar.gz`):
+               ```powershell
+               wsl --import Manjaro C:\WSL\Manjaro C:\path\to\rootfs.tar.gz --version 2
+               ```
+               **Important:** `--version 2` is required for WSL2. The third argument is the path to the `rootfs.tar.gz` file.
+            3. Start the distro:
+               ```powershell
+               wsl -d Manjaro
+               ```
+            4. Verify systemd is running:
+               ```bash
+               ps -p 1 -o comm=
+               ```
+               Expected output: `systemd`
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
